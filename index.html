@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avataro Gimimas | Cursor & AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* BAZINIAI STILIAI */
+        :root {
+            --bg-color: #eef7fa; /* Svelni pastelina juros vandens melsva */
+            --text-color: #1b3b4a; /* Tamsi juros gelmiu melyna tekstui */
+            --accent-color: #ffaa91; /* Pasteline koralu spalva (dera prie bures/antytes) */
+            --grey: #6b8e9b; /* Prigesinta melsvai pilka */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* TIPOGRAFIJA */
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        /* HERO SEKCIJA */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            /* Juros nuotrauka fone su svelniu pasteliniu filtru, kad tekstas butu iskaitomas */
+            background: linear-gradient(to bottom, rgba(238, 247, 250, 0.4), rgba(238, 247, 250, 0.95)), 
+                        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 10vw, 8rem);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text-color);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--text-color); /* Pakeista i pagrindine teksto spalva del geresnio kontrasto */
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* MYGTUKAI (Nike style) */
+        .btn {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 2px solid var(--text-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--text-color);
+        }
+
+        /* APIE PROCESA SEKCIJA */
+        .process-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .process-text {
+            flex: 1;
+        }
+
+        .process-text h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .process-text p {
+            font-size: 1.1rem;
+            color: var(--grey);
+            margin-bottom: 20px;
+        }
+
+        .process-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .process-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(27, 59, 74, 0.15); /* Svelnesnis seselis sviesiai temai */
+            transition: transform 0.5s ease;
+        }
+
+        .process-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* MEDIA SEKCIJA (Paslepta pradzioje) */
+        .media-section {
+            padding: 100px 20px;
+            background-color: #e0f0f5; /* Kiek tamsesne pastelina melsva atskyrimui */
+            text-align: center;
+            display: none; /* Rodoma paspaudus mygtuka */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .media-section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .media-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #cce0e8;
+            box-shadow: 0 10px 30px rgba(27, 59, 74, 0.1);
+        }
+
+        video, audio {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            outline: none;
+        }
+
+        /* ANIMACIJOS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE DIZAINAS (Mobiliesiems) */
+        @media (max-width: 768px) {
+            .process-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero h1 {
+                -webkit-text-stroke: 1px var(--text-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1 class="fade-up">JUST <br><span>CREATE</span> IT.</h1>
+        <p class="fade-up">Avataro kūrimo procesas naudojant Cursor, ElevenLabs ir Studio D-ID technologijas.</p>
+        <a href="#procesas" class="btn fade-up">Procesas</a>
+    </section>
+
+    <section id="procesas" class="process-section fade-up">
+        <div class="process-text">
+            <h2>PROCESAS IR <br>REZULTATAI.</h2>
+            <p><strong>Užduoties tikslas:</strong> Sukurti interaktyvią svetainę pristatant avataro kūrimą.</p>
+            <p><strong>Kaip man sekėsi:</strong> Visas projektas ėjosi itin sklandžiai. Apjungti skirtingus įrankius buvo įdomu ir paprasta. Susidūriau tik su viena problema – baigėsi „HeyGen“ kreditai, todėl teko rinktis kitą programą ir pasirinkau „Studio D-ID“. Nepaisant to, sugeneruota nuotrauka puikiai atitiko lūkesčius, o audio failo integracija į avatarą per naująją platformą pavyko iš pirmo karto. Viskas veikė intuityviai.</p>
+            <p>Štai sugeneruota burlentininkės nuotrauka, nuo kurios viskas prasidėjo. Spustelėk žemiau, kad pamatytum ir išgirstum galutinį rezultatą.</p>
+            
+            <br>
+            <button id="viewMediaBtn" class="btn">Peržiūrėti įrašą</button>
+        </div>
+        <div class="process-image">
+            <img src="Gemini_Generated_Image_6zhefh6zhefh6zhe.png" alt="Baby Pixar stiliaus burlentininke">
+        </div>
+    </section>
+
+    <section id="media-content" class="media-section">
+        <div class="media-container fade-up">
+            <h2>GALUTINIS REZULTATAS</h2>
+            <p style="color: var(--grey); margin-top: 10px;">Audio failas ir animuotas avataras</p>
+            
+            <audio controls>
+                <source src="ElevenLabs_2026-04-14T20_22_57_Melina - Instructive and Robotic_pvc_sp100_s50_sb75_v3.mp3" type="audio/mpeg">
+                Jusu narsykle nepalaiko audio failu.
+            </audio>
+
+            <video controls poster="Gemini_Generated_Image_6zhefh6zhefh6zhe.png">
+                <source src="Untitled video.mp4" type="video/mp4">
+                Jusu narsykle nepalaiko video failu.
+            </video>
+        </div>
+    </section>
+
+    <section class="process-section fade-up" style="flex-direction: column; text-align: center; margin-top: -50px;">
+        <h2>💬 PASIKALBĖK SU MANIMI</h2>
+        <p style="color: var(--grey); max-width: 600px; margin: 0 auto 20px;">Aš esu buriavimo ekspertė. Gali manęs paklausti bet ko apie šį sportą, tačiau į kitus klausimus neatsakysiu!</p>
+        
+        <div style="background: #111; padding: 30px; border-radius: 20px; border: 1px solid #333; width: 100%; max-width: 600px; margin: 0 auto;">
+            <input type="text" id="userInput" placeholder="Įvesk savo klausimą čia..." style="width: 100%; padding: 15px; border-radius: 10px; border: none; margin-bottom: 15px; font-family: 'Inter', sans-serif; font-size: 1rem;">
+            <button id="askBtn" class="btn" style="width: 100%; padding: 10px;">Klausti</button>
+            
+            <div id="aiResponse" style="margin-top: 20px; color: var(--accent-color); font-weight: bold; min-height: 50px;">
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: var(--grey); font-family: 'Oswald', sans-serif; text-transform: uppercase;">
+        DIU2F | 92 Uzduotis
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Sklandus atsiradimas (Fade Up animacija) slenkant zemyn
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            // Mygtuko "Perziureti irasa" logika
+            const viewMediaBtn = document.getElementById('viewMediaBtn');
+            const mediaSection = document.getElementById('media-content');
+
+            viewMediaBtn.addEventListener('click', () => {
+                // Parodome sekcija
+                mediaSection.classList.add('active');
+                
+                // Animacijai suteikiame "visible" klase
+                setTimeout(() => {
+                    mediaSection.querySelector('.fade-up').classList.add('visible');
+                }, 100);
+
+                // Nuskroliname ekrana iki video sekcijos
+                mediaSection.scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // OpenAI Chatbot logika
+            const askBtn = document.getElementById('askBtn');
+            const userInput = document.getElementById('userInput');
+            const aiResponse = document.getElementById('aiResponse');
+
+            askBtn.addEventListener('click', async () => {
+                const question = userInput.value.trim();
+                if (!question) return;
+
+                aiResponse.innerText = "Galvojama...";
+                
+                // TAVO OPENAI API RAKTAS (Po prezentacijos jį BŪTINA ištrinti iš Github!)
+                const apiKey = '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';
+
+                try {
+                    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o-mini", // Naudojame pigesnį ir greitesnį modelį
+                            messages: [
+                                {
+                                    role: "system",
+                                    // ČIA YRA MAGIJA: Instrukcija, kad kalbėtų tik apie buriavimą
+                                    content: "Esi jauna, energinga burlenčių sporto ekspertė. Tavo užduotis - atsakinėti TIK į klausimus, susijusius su buriavimu burlente, vėju, vandens sportu. Jei vartotojas klausia apie matematiką, politiką, programavimą ar bet ką kitą, mandagiai atsakyk: 'Atsiprašau, bet aš nusimanau tik apie buriavimą burlente! Klausk manęs apie vėją ir bangas.'"
+                                },
+                                { role: "user", content: question }
+                            ],
+                            max_tokens: 150 // Ribojame atsakymo ilgį
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.choices && data.choices.length > 0) {
+                        aiResponse.innerText = data.choices[0].message.content;
+                    } else {
+                        aiResponse.innerText = "Įvyko klaida gaunant atsakymą.";
+                    }
+                } catch (error) {
+                    console.error(error);
+                    aiResponse.innerText = "Nepavyko prisijungti prie AI serverio.";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
