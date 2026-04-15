@@ -1,198 +1,22 @@
-<!DOCTYPE html>
-<html lang="lt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avataro Gimimas | Cursor & AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #eef7fa; 
-            --text-color: #1b3b4a; 
-            --accent-color: #ffaa91; 
-            --grey: #6b8e9b; 
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(to bottom, rgba(238, 247, 250, 0.4), rgba(238, 247, 250, 0.95)), 
-                        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-        }
-
-        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 10px; }
-        .hero h1 span { color: transparent; -webkit-text-stroke: 2px var(--text-color); }
-        .hero p { font-weight: 600; margin-bottom: 30px; }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--text-color);
-            color: white;
-            font-family: 'Oswald', sans-serif;
-            padding: 15px 40px;
-            text-decoration: none;
-            text-transform: uppercase;
-            border-radius: 50px;
-            transition: 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn:hover { background-color: var(--accent-color); color: white; }
-
-        .process-section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .process-text { flex: 1; }
-        .process-image { flex: 1; }
-        .process-image img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-
-        .chat-container {
-            background: #1b3b4a; /* Tamsus fonas chatui */
-            padding: 40px;
-            border-radius: 30px;
-            color: white;
-            max-width: 700px;
-            margin: 40px auto;
-            text-align: center;
-        }
-
-        #userInput {
-            width: 100%;
-            padding: 15px;
-            border-radius: 10px;
-            border: none;
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        #aiResponse {
-            margin-top: 20px;
-            color: var(--accent-color);
-            font-weight: bold;
-            min-height: 50px;
-        }
-
-        .media-section { display: none; padding: 40px; text-align: center; background: #dceef5; }
-        .media-section.active { display: block; }
-
-        .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) { .process-section { flex-direction: column-reverse; text-align: center; } }
-    </style>
-</head>
-<body>
-
-    <section class="hero">
-        <h1 class="fade-up">JUST <br><span>CREATE</span> IT.</h1>
-        <p class="fade-up">DI užduotis: Avataro kūrimas su Cursor ir ElevenLabs.</p>
-        <a href="#procesas" class="btn fade-up">Mano procesas</a>
-    </section>
-
-    <section id="procesas" class="process-section fade-up">
+<section id="procesas" class="process-section fade-up">
         <div class="process-text">
             <h2>PROCESAS IR REZULTATAI.</h2>
-            <p><strong>Tikslas:</strong> Sukurti interaktyvų DI prisistatymą.</p>
-            <p><strong>Patirtis:</strong> Projektas ėjosi sklandžiai. Nors „HeyGen“ kreditai baigėsi, sėkmingai perėjau prie „Studio D-ID“. Išmokau apjungti vaizdą, garsą ir kodą į vientisą visumą.</p>
-            <button id="viewMediaBtn" class="btn">Peržiūrėti rezultatą</button>
+            
+            <p><strong>Užduoties tikslas:</strong> Sukurti interaktyvią svetainę pristatant avataro kūrimą nuo idėjos iki veikiančio rezultato.</p>
+            
+            <p><strong>Naudoti įrankiai:</strong> Projekto metu buvo dirbama su keliais pažangiais DI įrankiais: <strong>HeyGen</strong> (pradiniam testavimui), <strong>Studio D-ID</strong> (galutiniam vaizdo generavimui), <strong>ElevenLabs</strong> (balso sintezei) bei <strong>Cursor</strong> (kodavimui).</p>
+            
+            <p><strong>Kaip man sekėsi:</strong> Visas projektas ėjosi itin sklandžiai. Apjungti skirtingus įrankius buvo įdomu ir paprasta. Kūrybinio proceso metu susidūriau tik su viena technine kliūtimi – baigėsi „HeyGen“ platformos nemokami kreditai. Tačiau tai tapo puikia galimybe išbandyti alternatyvą, todėl pasirinkau <strong>„Studio D-ID“</strong>.</p>
+            
+            <p><strong>Išvados:</strong> Nepaisant platformų keitimo, sugeneruota nuotrauka puikiai atitiko lūkesčius, o audio failo integracija į avatarą per naująją platformą pavyko iš pirmo karto. Viskas veikė intuityviai ir leido pasiekti norimą interaktyvumą.</p>
+            
+            <p>Štai sugeneruota burlentininkės nuotrauka, nuo kurios viskas prasidėjo. Spustelk žemiau, kad pamatytum ir išgirstum galutinį rezultatą.</p>
+            
+            <br>
+            <button id="viewMediaBtn" class="btn">Peržiūrėti įrašą</button>
         </div>
+        
         <div class="process-image">
-            <img src="Gemini_Generated_Image_6zhefh6zhefh6zhe.png" alt="Avataras">
+            <img src="Gemini_Generated_Image_6zhefh6zhefh6zhe.png" alt="Sugeneruotas DI avataras">
         </div>
     </section>
-
-    <section id="media-content" class="media-section">
-        <div class="fade-up">
-            <h2>GALUTINIS REZULTATAS</h2>
-            <audio controls style="margin-bottom: 20px;">
-                <source src="ElevenLabs_2026-04-14T20_22_57_Melina - Instructive and Robotic_pvc_sp100_s50_sb75_v3.mp3" type="audio/mpeg">
-            </audio>
-            <video controls style="max-width: 600px; margin: 0 auto; display: block;">
-                <source src="Untitled video.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
-
-    <section class="chat-container fade-up">
-        <h2 style="color: white; margin-bottom: 10px;">💬 PASIKALBĖK SU MANIMI</h2>
-        <p style="color: #6b8e9b; margin-bottom: 20px;">Klausk manęs apie buriavimą!</p>
-        <input type="text" id="userInput" placeholder="Įrašyk klausimą čia...">
-        <button id="askBtn" class="btn" style="width: 100%;">Klausti</button>
-        <div id="aiResponse"></div>
-    </section>
-
-    <footer style="text-align: center; padding: 40px; color: var(--grey);">
-        DIU2F | 92 UŽDUOTIS
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Animacijos
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-            // Perziuros mygtukas
-            document.getElementById('viewMediaBtn').addEventListener('click', () => {
-                const media = document.getElementById('media-content');
-                media.classList.add('active');
-                media.scrollIntoView({ behavior: 'smooth' });
-                media.querySelector('.fade-up').classList.add('visible');
-            });
-
-            // IMITACINIS AI (Saugus ir veikiantis be API rakto)
-            const askBtn = document.getElementById('askBtn');
-            const aiResponse = document.getElementById('aiResponse');
-
-            askBtn.addEventListener('click', () => {
-                const val = document.getElementById('userInput').value.toLowerCase();
-                if(!val) return;
-
-                aiResponse.innerText = "Mąstau...";
-                
-                setTimeout(() => {
-                    let msg = "Atsiprašau, bet nusimanau tik apie buriavimą! Klausk manęs apie vėją ar lentas.";
-                    
-                    if(val.includes("labas") || val.includes("sveik")) msg = "Labas! Esu buriavimo ekspertė. Kaip galiu padėti?";
-                    if(val.includes("vėj") || val.includes("bang")) msg = "Buriavimui geriausias stabilus vėjas. Pradedantiesiems rekomenduoju 4-6 m/s greitį.";
-                    if(val.includes("įrang") || val.includes("lent")) msg = "Pradžiai geriausia rinktis plačią, stabilią lentą ir mažesnę burę.";
-                    if(val.includes("kur") || val.includes("viet")) msg = "Lietuvoje geriausia buriuoti Kuršių mariose arba prie Dusios ežero.";
-
-                    aiResponse.innerText = msg;
-                }, 1000);
-            });
-        });
-    </script>
-</body>
-</html>
