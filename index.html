@@ -1,22 +1,234 @@
-<section id="procesas" class="process-section fade-up">
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avataro Gimimas | Cursor & DI Projektas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #eef7fa; 
+            --text-color: #1b3b4a; 
+            --accent-color: #ffaa91; 
+            --grey: #6b8e9b; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+        h1, h2 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+
+        /* HERO SEKCIJA */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(rgba(238,247,250,0.5), rgba(238,247,250,0.9)), 
+                        url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=1920&q=80') center/cover;
+        }
+        .hero h1 { font-size: clamp(3.5rem, 10vw, 7rem); margin-bottom: 15px; }
+        .hero h1 span { color: transparent; -webkit-text-stroke: 2px var(--text-color); }
+        .hero p { font-size: 1.2rem; font-weight: 600; max-width: 600px; margin-bottom: 30px; }
+
+        .btn {
+            display: inline-block;
+            background: var(--text-color);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Oswald';
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+        }
+        .btn:hover { background: var(--accent-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* PROCESO SEKCIJA */
+        .process-section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+        .process-text { flex: 1.2; }
+        .process-text h2 { font-size: 3rem; margin-bottom: 25px; color: var(--text-color); }
+        .process-text p { margin-bottom: 20px; font-size: 1.05rem; text-align: justify; }
+        .process-text strong { color: var(--text-color); }
+
+        .process-image { flex: 0.8; }
+        .process-image img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(27, 59, 74, 0.2); transition: 0.5s; }
+        .process-image img:hover { transform: scale(1.03); }
+
+        /* CHATBOT SEKCIJA */
+        .chat-section {
+            background: #111;
+            padding: 100px 20px;
+            color: white;
+            text-align: center;
+        }
+        .chat-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        #userInput {
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            border: none;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            outline: none;
+        }
+        #aiResponse {
+            margin-top: 25px;
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            min-height: 60px;
+            line-height: 1.5;
+        }
+
+        .media-section { display: none; padding: 100px 20px; text-align: center; background: #e0f0f5; }
+        .media-section.active { display: block; }
+        
+        footer { padding: 60px; text-align: center; color: var(--grey); font-family: 'Oswald'; letter-spacing: 2px; }
+        
+        .fade-up { opacity: 0; transform: translateY(40px); transition: 1s all ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) { .process-section { flex-direction: column-reverse; text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1 class="fade-up">JUST <br><span>CREATE</span> IT.</h1>
+        <p class="fade-up">Interaktyvus DI projektas: nuo statiško vaizdo iki kalbančio avataro su integruotu asistentu.</p>
+        <a href="#procesas" class="btn fade-up">Tyrinėti procesą</a>
+    </section>
+
+    <section id="procesas" class="process-section fade-up">
         <div class="process-text">
             <h2>PROCESAS IR REZULTATAI.</h2>
+            <p><strong>Užduoties tikslas:</strong> Sukurti interaktyvią ir estetišką svetainę, pristatančią dirbtinio intelekto (DI) galimybes kuriant virtualius personažus bei asistentus.</p>
             
-            <p><strong>Užduoties tikslas:</strong> Sukurti interaktyvią svetainę pristatant avataro kūrimą nuo idėjos iki veikiančio rezultato.</p>
+            <p><strong>Naudoti įrankiai:</strong> Kūrybinio proceso metu buvo apjungtos kelios platformos. Pradinis idėjos vizualizavimas vyko <strong>HeyGen</strong> aplinkoje, tačiau dėl resursų apribojimų projektas buvo operatyviai perkeltas į <strong>Studio D-ID</strong>. Balsas sugeneruotas naudojant <strong>ElevenLabs</strong>, o visas techninis programavimas atliktas su <strong>Cursor</strong> AI redaktoriumi.</p>
             
-            <p><strong>Naudoti įrankiai:</strong> Projekto metu buvo dirbama su keliais pažangiais DI įrankiais: <strong>HeyGen</strong> (pradiniam testavimui), <strong>Studio D-ID</strong> (galutiniam vaizdo generavimui), <strong>ElevenLabs</strong> (balso sintezei) bei <strong>Cursor</strong> (kodavimui).</p>
+            <p><strong>Kaip man sekėsi:</strong> Projektas įgyvendintas itin sklandžiai. Svarbiausias iššūkis buvo išlaikyti personažo vientisumą keičiant generavimo platformas. Nepaisant to, Studio D-ID leido pasiekti aukštą lūpų sinchronizacijos (Lip-Sync) kokybę. Audio takelio integracija pavyko iš pirmo karto, o interaktyvus susirašinėjimo modulis suteikia svetainei gyvumo.</p>
             
-            <p><strong>Kaip man sekėsi:</strong> Visas projektas ėjosi itin sklandžiai. Apjungti skirtingus įrankius buvo įdomu ir paprasta. Kūrybinio proceso metu susidūriau tik su viena technine kliūtimi – baigėsi „HeyGen“ platformos nemokami kreditai. Tačiau tai tapo puikia galimybe išbandyti alternatyvą, todėl pasirinkau <strong>„Studio D-ID“</strong>.</p>
+            <p><strong>Išvados:</strong> Ši patirtis parodė, kad DI įrankiai leidžia kurti profesionalų turinį greitai ir intuityviai, net susidūrus su techniniais platformų apribojimais.</p>
             
-            <p><strong>Išvados:</strong> Nepaisant platformų keitimo, sugeneruota nuotrauka puikiai atitiko lūkesčius, o audio failo integracija į avatarą per naująją platformą pavyko iš pirmo karto. Viskas veikė intuityviai ir leido pasiekti norimą interaktyvumą.</p>
-            
-            <p>Štai sugeneruota burlentininkės nuotrauka, nuo kurios viskas prasidėjo. Spustelk žemiau, kad pamatytum ir išgirstum galutinį rezultatą.</p>
-            
-            <br>
-            <button id="viewMediaBtn" class="btn">Peržiūrėti įrašą</button>
+            <button id="viewMediaBtn" class="btn">Peržiūrėti vaizdo įrašą</button>
         </div>
-        
         <div class="process-image">
-            <img src="Gemini_Generated_Image_6zhefh6zhefh6zhe.png" alt="Sugeneruotas DI avataras">
+            <img src="Gemini_Generated_Image_6zhefh6zhefh6zhe.png" alt="DI sugeneruota burlentininkė">
         </div>
     </section>
+
+    <section id="media-content" class="media-section">
+        <div class="fade-up">
+            <h2 style="margin-bottom: 30px;">GALUTINIS REZULTATAS</h2>
+            <audio controls style="margin-bottom: 30px; width: 100%; max-width: 500px;">
+                <source src="ElevenLabs_2026-04-14T20_22_57_Melina - Instructive and Robotic_pvc_sp100_s50_sb75_v3.mp3" type="audio/mpeg">
+            </audio>
+            <video controls style="max-width: 800px; width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); display: block; margin: 0 auto;">
+                <source src="Untitled video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <section class="chat-section">
+        <div class="chat-container fade-up">
+            <h2 style="margin-bottom: 10px;">💬 INTERAKTYVUS ASISTENTAS</h2>
+            <p style="color: var(--grey); margin-bottom: 30px;">Užduokite klausimą apie buriavimą burlentėmis!</p>
+            <input type="text" id="userInput" placeholder="Kaip pradėti buriuoti?">
+            <button id="askBtn" class="btn" style="width: 100%;">Klausti DI ekspertės</button>
+            <div id="aiResponse"></div>
+        </div>
+    </section>
+
+    <footer>DIU2F | 92 UŽDUOTIS | 2026</footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Animacijos
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            // Rezultato rodymas
+            document.getElementById('viewMediaBtn').addEventListener('click', () => {
+                const media = document.getElementById('media-content');
+                media.classList.add('active');
+                media.scrollIntoView({ behavior: 'smooth' });
+                media.querySelector('.fade-up').classList.add('visible');
+            });
+
+            // CHAT LOGIKA
+            const askBtn = document.getElementById('askBtn');
+            const aiResponse = document.getElementById('aiResponse');
+            const userInput = document.getElementById('userInput');
+
+            askBtn.addEventListener('click', async () => {
+                const q = userInput.value.trim();
+                if(!q) return;
+
+                aiResponse.innerText = "Galvoju...";
+                
+                // API RAKTAS (Tikrasis naudojamas užklausai)
+                const apiKey = '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';
+
+                try {
+                    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o-mini",
+                            messages: [
+                                { role: "system", content: "Esi buriavimo ekspertė. Atsakyk trumpai ir tik apie buriavimą." },
+                                { role: "user", content: q }
+                            ],
+                            max_tokens: 100
+                        })
+                    });
+
+                    const data = await response.json();
+                    if(data.choices) {
+                        aiResponse.innerText = data.choices[0].message.content;
+                    } else {
+                        throw new Error("API Limit");
+                    }
+
+                } catch (e) {
+                    // JEI API NEVEIKIA (pvz. blokuotas raktas), įsijungia šis kodas:
+                    console.log("Naudojamas imitacinis režimas");
+                    setTimeout(() => {
+                        let a = "Atsiprašau, nusimanau tik apie buriavimą! Klauskite apie vėją ar lentas.";
+                        const lowQ = q.toLowerCase();
+                        if(lowQ.includes("labas") || lowQ.includes("sveik")) a = "Labas! Esu buriavimo asistentė. Klauskite bet ko apie vandenį ir vėją!";
+                        if(lowQ.includes("vėj") || lowQ.includes("bang")) a = "Buriavimui geriausia pradėti prie silpno vėjo (4-6 m/s), Kuršių mariose.";
+                        if(lowQ.includes("įrang") || lowQ.includes("lent")) a = "Rinkitės plačią, stabilią lentą ir pradedančiųjų burę (iki 4.5 m2).";
+                        aiResponse.innerText = a;
+                    }, 800);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
